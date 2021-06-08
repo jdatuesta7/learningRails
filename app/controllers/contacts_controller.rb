@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
     def index
-        
+        @contacts = Contact.all
     end
 
     def new
@@ -34,7 +34,7 @@ class ContactsController < ApplicationController
         @contact = Contact.find(params[:id])
         @contact.destroy
         
-        redirect_to root_path
+        redirect_to "/contacts"
     end
     
 end
