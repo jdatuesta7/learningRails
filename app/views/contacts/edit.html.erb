@@ -1,0 +1,21 @@
+<h1>Edit Contact</h1>
+<%= form_with(model:@contact, local:true) do |f| %>
+
+<div class="form-group mt-4">
+    <%= f.label :fullname %>
+    <%= f.text_field :fullname %>
+</div>
+<div class="form-group mt-4">
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+</div>
+<div class="form-group mt-4">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+</div>
+
+<div class="mt-4">
+    <%= f.submit %>
+</div>
+
+<%end%>
