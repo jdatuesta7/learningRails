@@ -12,7 +12,9 @@ class ContactsController < ApplicationController
 
     def store
         @contact = Contact.create(fullname: params[:contact][:fullname], phone: params[:contact][:phone], email: params[:contact][:email])
-        render json: @contact
+        #render json: @contact
+        
+        redirect_to "/contacts"
     end
 
     def show
