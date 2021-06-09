@@ -159,6 +159,10 @@ a.article:hover {
   text-align: center;
 }
 
+// .activo{
+//     display: block;
+// }
+
 @media (max-width: 768px) {
   #sidebar {
     margin-left: -250px;
@@ -171,4 +175,6 @@ a.article:hover {
   #sidebarCollapse span {
     display: none;
   }
+
+  
 }
