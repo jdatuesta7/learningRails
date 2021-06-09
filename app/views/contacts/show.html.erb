@@ -1,22 +1,23 @@
+
 <div class="container">
     <div class="row">
         <div class="card col-6 mx-auto mt-4">
-            <div class="card-header">
-                <h3 class="text-center">Show Contact</h3>
-            </div>
+            <h3 class="text-center mt-2">Show Contact</h3>
             <div class="card-body">
                 <p class="card-text"><b>Name:</b> <%= @contact.fullname %></p>
                 <p class="card-text"><b>Phone:</b> <%= @contact.phone %></p>
                 <p class="card-text"><b>Email:</b> <%= @contact.email %></p>
                 <div class="row">
-                    <div class="col-2">
-                         <%= link_to "Edit", '2/edit', class: 'btn btn-warning' %>
+                    <div class="col-3">
+                        <%= link_to "Back", contacts_path, class: 'btn btn-info' %>
                     </div>
-                    <div class="col-2">
+                    <div class="col-3">
                         <%= link_to "Delete", @contact, method: :delete, class: 'btn btn-danger' %>
                     </div>
+                    <div class="col-3">
+                        <%= link_to "Edit", edit_contact_path, class: 'btn btn-warning' %>
+                    </div>
                 </div>
-                
             </div>
         </div>
     </div>

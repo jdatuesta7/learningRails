@@ -1,42 +1,44 @@
 class ContactsController < ApplicationController
+    before_action :getFormData, only: [:store, :update]
+    before_action :findContact, only: [:show, :edit, :update, :destroy]
+
     def index
         @contacts = Contact.all
     end
 
     def new
         @contact = Contact.new
-        #@contact.fullname = 'Jhonatan'
-        #@contact.phone = 3022626559
-        #@contact.email = 'jdatuesta7@gmail.com'
     end
 
     def store
-        @contact = Contact.create(fullname: params[:contact][:fullname], phone: params[:contact][:phone], email: params[:contact][:email])
+        @contact = Contact.create(fullname: @formData['fullname'], phone: @formData['phone'], email: @formData['email'])
         #render json: @contact
-        
         redirect_to "/contacts"
     end
 
     def show
-        @contact = Contact.find(params[:id])
     end
 
     def edit
-        @contact = Contact.find(params[:id])
     end
 
     def update
-        @contact = Contact.find(params[:id])
-        @contact.update(fullname: params[:contact][:fullname], phone: params[:contact][:phone], email: params[:contact][:email])
-        
+        @contact.update(fullname: @formData['fullname'], phone: @formData['phone'], email: @formData['email'])
         redirect_to @contact
     end
 
     def destroy
-        @contact = Contact.find(params[:id])
         @contact.destroy
-        
         redirect_to "/contacts"
+    end
+
+    def findContact
+        @contact = Contact.find(params[:id])
+    end
+
+    private
+    def getFormData
+        @formData =  params.require(:contact).permit(:fullname, :phone, :email)
     end
     
 end
