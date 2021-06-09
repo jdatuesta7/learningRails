@@ -9,9 +9,6 @@
                 <p class="card-text"><b>Email:</b> <%= @contact.email %></p>
                 <div class="row">
                     <div class="col-3">
-                        <%= link_to "Back", contacts_path, class: 'btn btn-info' %>
-                    </div>
-                    <div class="col-3">
                         <%= link_to "Delete", @contact, method: :delete, class: 'btn btn-danger' %>
                     </div>
                     <div class="col-3">
