@@ -1,7 +1,8 @@
 class ContactsController < ApplicationController
+    before_action :authenticate_user!
     before_action :getFormData, only: [:store, :update]
     before_action :findContact, only: [:show, :edit, :update, :destroy]
-
+    
     def index
         @contacts = Contact.all
     end

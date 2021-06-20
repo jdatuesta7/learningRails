@@ -14,17 +14,29 @@
   <body>
     <div class="wrapper">
       <!-- Sidebar -->
+      <% if user_signed_in? %>
       <nav id="sidebar">
         <%= render "partials/sideBar" %>
       </nav>
+      <% end %>
+
       <div id="content">
         <!-- Navbar -->
+        <% if notice %>
+          <p class="alert alert-primary"><%= notice %></p>
+        <%end%>
+
+        <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+        <%end%>
+        
         <%= render "partials/navBar" %>
         <!-- Page Content -->
         <%= yield %>
         <!-- Footer -->
         <%= render "partials/footer" %>
       </div>
+
     </div>
   </body>
 </html>

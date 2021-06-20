@@ -1,5 +1,8 @@
 <div class="container">
     <h1 class="text-danger">Hello world</h1>
+    <% if user_signed_in? %>
+    <h3 class="text-primary">Welcome, You are logged in <%= current_user.email %>!</h3>
+    <%end%>
     <%= link_to "Lista de contactos", "/contacts", class: 'btn btn-info' %>
 </div>
 
