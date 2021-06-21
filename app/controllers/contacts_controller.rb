@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
     before_action :authenticate_user!
-    before_action :getFormData, only: [:store, :update]
+    before_action :contacts_params, only: [:create, :update]
     before_action :findContact, only: [:show, :edit, :update, :destroy]
     
     def index
@@ -11,8 +11,8 @@ class ContactsController < ApplicationController
         @contact = Contact.new
     end
 
-    def store
-        @contact = Contact.create(fullname: @formData['fullname'], phone: @formData['phone'], email: @formData['email'])
+    def create
+        @contact = current_user.contacts.create(contacts_params)
         #render json: @contact
         redirect_to "/contacts"
     end
@@ -24,7 +24,7 @@ class ContactsController < ApplicationController
     end
 
     def update
-        @contact.update(fullname: @formData['fullname'], phone: @formData['phone'], email: @formData['email'])
+        @contact.update(contacts_params)
         redirect_to @contact
     end
 
@@ -38,8 +38,8 @@ class ContactsController < ApplicationController
     end
 
     private
-    def getFormData
-        @formData =  params.require(:contact).permit(:fullname, :phone, :email)
+    def contacts_params
+        params.require(:contact).permit(:fullname, :phone, :email)
     end
     
 end
