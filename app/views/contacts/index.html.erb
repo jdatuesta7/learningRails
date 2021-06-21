@@ -10,18 +10,25 @@
             <th scope="col">FullName</th>
             <th scope="col">Phone</th>
             <th scope="col">Email</th>
+          <% if current_user.id == 1 %>
+            <th scope="col">User</th>
+          <% end %>
             <th scope="col"></th>
             <th scope="col"></th>
             <th scope="col"></th>
+            
           </tr>
         </thead>
         <tbody>
         <% @contacts.each do |contact| %>
-          <tr>
-            <th scope="row"><%= contact.id %></th>
+          <tr>          
+            <th scope="row"><%= @numbers += 1 %></th>
             <td><%= contact.fullname %></td>
             <td><%= contact.phone %></td>
             <td><%= contact.email %></td>
+          <% if current_user.id == 1 %>
+            <td><%= contact.user.email %></td>
+          <% end %>
             <td><%= link_to "Show", contact_path(contact), class: 'btn btn-info mx-1' %></td>
             <td><%= link_to "Edit", edit_contact_path(contact), class: 'btn btn-warning' %></td>
             <td><%= link_to "Delete", contact_path(contact), method: :delete, class: 'btn btn-danger mx-1' %></td>

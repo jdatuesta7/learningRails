@@ -4,7 +4,12 @@ class ContactsController < ApplicationController
     before_action :findContact, only: [:show, :edit, :update, :destroy]
     
     def index
-        @contacts = Contact.all
+        @numbers = 0
+        if current_user.id == 1
+            @contacts = Contact.all
+        else
+            @contacts = Contact.where(user: current_user) 
+        end
     end
 
     def new
